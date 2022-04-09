@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const fetch = require('cross-fetch')
+const res = require('express/lib/response')
 
 const app = express()
 let port = process.env.PORT || 9999
@@ -9,6 +10,11 @@ let port = process.env.PORT || 9999
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
+
+//  test
+app.get("/", (req,res) => {
+    res.send("hello world :-)");
+});
 
 // get OneMap Token
 app.post('/getToken', (req,res) => {
